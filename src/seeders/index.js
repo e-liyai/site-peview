@@ -5,7 +5,7 @@ const createUsers = async () => {
   await sequelize.sync()
   await models.User.create({
     username: 'test_user',
-    password: sha256('Message to hash')
+    password: sha256('password')
   })
 }
 

@@ -3,6 +3,6 @@ const isLive = require('./isLive')
 const login = require('./login')
 
 routes.get('', isLive)
-routes.post('/login/:username/:password', login)
+routes.get('/login/:username/:password', login)
 
 module.exports = routes

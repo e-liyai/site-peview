@@ -2,6 +2,11 @@ const sha256 = require('js-sha256')
 
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     username: {
       type: DataTypes.STRING,
       unique: true,
