@@ -1,6 +1,6 @@
 const secret = process.env.APP_SECRET
 const env = process.env.NODE_ENV
-const pathVersion = '/api/v1'
+const pathVersion = '/api/v1/'
 
 const config = env => {
   let configOutput
@@ -14,7 +14,7 @@ const config = env => {
       break
     case 'production':
       configOutput = {
-        port: process.env.APP_PORT || 5000,
+        port: process.env.APP_PORT,
         secret,
         pathVersion
       }
