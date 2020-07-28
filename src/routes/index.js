@@ -1,9 +1,8 @@
 const routes = require('express').Router()
-
-const isLive = (req, res) => {
-  res.send({ status: 'endpoint is working' })
-}
+const isLive = require('./isLive')
+const login = require('./login')
 
 routes.get('', isLive)
+routes.post('/login/:username/:password', login)
 
 module.exports = routes
