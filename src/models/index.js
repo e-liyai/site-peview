@@ -1,4 +1,7 @@
 const Sequelize = require('sequelize')
+
+const User = require('./user')
+
 const {
   database,
   dbUser,
@@ -7,9 +10,8 @@ const {
 } = require('../../config')
 
 const sequelize = new Sequelize(database, dbUser, dbPassword, dbDialect)
-
 const models = {
-  User: sequelize.import('./user')
+  User: User(sequelize, Sequelize)
 }
 
 Object.keys(models).forEach(key => {
@@ -18,6 +20,7 @@ Object.keys(models).forEach(key => {
   }
 })
 
-export { sequelize }
-
-export default models
+module.exports = {
+  sequelize,
+  models
+}
