@@ -1,0 +1,19 @@
+{
+  "name": "site-preview",
+  "version": "1.0.0",
+  "description": "create a response that can then be shown to the user as a card, when a url is presented",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-liyai/site-preview.git"
+  },
+  "author": "liyai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e-liyai/site-preview/issues"
+  },
+  "homepage": "https://github.com/e-liyai/site-preview#readme"
+}
