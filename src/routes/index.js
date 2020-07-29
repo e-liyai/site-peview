@@ -6,6 +6,7 @@ const parse = require('./parse')
 const upload = require('./upload')
 const download = require('./download')
 const userInfo = require('./userInfo')
+const { translateInstruction, translate } = require('./translate')
 const { authenticate } = require('../middleware')
 
 routes.get('', isLive)
@@ -14,5 +15,7 @@ routes.get('/user/:username', authenticate, userInfo)
 routes.get('/parse/:url*', authenticate, parse)
 routes.post('/upload', authenticate, upload)
 routes.get('/download/:path*', authenticate, download)
+routes.get('/translate', authenticate, translateInstruction)
+routes.post('/translate/:url*', authenticate, translate)
 
 module.exports = routes

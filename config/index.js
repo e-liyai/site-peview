@@ -16,7 +16,14 @@ const config = env => {
     cloud_api_key: process.env.CLOUDINARY_KEY,
     cloud_api_secret: process.env.CLOUDINARY_SECRET
   }
+  const googleConfig = {
+    googleProjectId: process.env.PROJECT_ID,
+    translateRegion: process.env.GOOGLE_TRANSLATE_REGION,
+    parent: `projects/${process.env.PROJECT_ID}/locations/${process.env.GOOGLE_TRANSLATE_REGION}`,
+    GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  }
   let configOutput = {
+    ...googleConfig,
     ...dbConfig,
     ...cloudinaryConfig
   }

@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     responseHelper(res, err, 400)
   }
-  const resp = await fetch.fetchFile(url)
+  const resp = await fetch.fetchFile(url.href)
   if (!resp.status) {
     responseHelper(res, { message: constants.EXTERNAL_ERROR }, 502)
     return

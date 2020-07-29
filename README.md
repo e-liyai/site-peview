@@ -20,6 +20,10 @@ Lists user infor and all files uploaded by a user.
 ### parse
 
 ### translate
+perform GET request (`GET: ap1/v1/translate`) to get instraction on how to do the translate.
+
+To performm the translate execute:
+`POST: ap1/v1/translate/<url>` with a payload that specifies the language to translate to.
 
 ### upload
 uploads files to the cloud and saves file information. To retrieve the file, copy the `secure_url`(file->secure_url) value and perform a download. To list all the files uploaded, get user information.

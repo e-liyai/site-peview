@@ -1,3 +1,8 @@
+const {
+  responseHelper,
+  constants
+} = require('../utils')
+
 module.exports = (req, res) => {
-  res.send({ status: 'endpoint is working' })
+  responseHelper(res, { status: constants.IS_LIVE })
 }

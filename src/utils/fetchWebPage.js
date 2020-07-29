@@ -1,20 +1,15 @@
 const axios = require('axios')
 
-const fetchWebPage = async (url) => {
-  const resp = await axios({
-    method: 'GET',
-    url
-  })
-  console.log(resp.data)
-}
-
-const fetchFile = async (url) => {
+const makeAxiosCall = async (url, stream = false) => {
   try {
-    const resp = await axios({
+    let params = {
       method: 'GET',
-      url: url.href,
-      responseType: 'stream'
-    })
+      url
+    }
+    if (stream) {
+      params = { ...params, responseType: 'stream' }
+    }
+    const resp = await axios(params)
     return {
       status: true,
       data: resp.data
@@ -25,6 +20,14 @@ const fetchFile = async (url) => {
       data: err
     }
   }
+}
+
+const fetchWebPage = async (url) => {
+  return makeAxiosCall(url)
+}
+
+const fetchFile = async (url) => {
+  return makeAxiosCall(url, true)
 }
 
 module.exports = {
