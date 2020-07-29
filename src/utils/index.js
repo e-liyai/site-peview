@@ -1,5 +1,5 @@
 const { webToken } = require('./webToken')
-const response = require('./response')
+const { responseFile, response } = require('./response')
 const constants = require('./constants')
 const logger = require('./logger')
 const fetchWebPage = require('./fetchWebPage')
@@ -10,6 +10,7 @@ module.exports = {
   logger,
   storage,
   cloudinary,
+  responseFile,
   fetch: fetchWebPage,
   webToken,
   responseHelper: response

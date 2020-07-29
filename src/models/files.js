@@ -5,7 +5,14 @@ const files = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    file: {
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    filename: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

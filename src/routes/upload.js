@@ -7,10 +7,11 @@ const { models } = require('../models')
 const {
   storage,
   cloudinary,
-  responseHelper
+  responseHelper,
+  constants
 } = require('../utils')
 
-module.exports = async (req, res, next) => {
+module.exports = async (req, res) => {
   const upload = multer({ storage }).single('file')
   let fileResponse = null
   await upload(req, res, async (err) => {
@@ -25,7 +26,11 @@ module.exports = async (req, res, next) => {
     try {
       await cloudinary.uploader.upload(
         path,
-        { public_id: `files/${uniqueFilename}`, tags: 'files' },
+        {
+          public_id: `files/${uniqueFilename}`,
+          tags: 'files',
+          resource_type: 'raw'
+        },
         function (err, file) {
           if (err) return responseHelper(res, err, 500)
           fs.unlinkSync(path)
@@ -36,9 +41,13 @@ module.exports = async (req, res, next) => {
       const dbUser = await user.getUser(req.username)
       await models.Files.create({
         userId: dbUser.id,
-        file: fileResponse.secure_url
+        url: fileResponse.secure_url,
+        filename: fileResponse.original_filename
       })
-      responseHelper(res, { file: fileResponse })
+      responseHelper(res, {
+        file: fileResponse,
+        NOTE: constants.CLOUDINARY_LIMITATIONS
+      })
     } catch (err) {
       responseHelper(res, err, 500)
     }
