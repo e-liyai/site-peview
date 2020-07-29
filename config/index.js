@@ -3,7 +3,6 @@ const env = process.env.NODE_ENV
 const pathVersion = '/api/v1/'
 
 const config = env => {
-  let configOutput
   const dbConfig = {
     database: process.env.DATABASE,
     dbUser: process.env.DATABASE_USER,
@@ -12,21 +11,31 @@ const config = env => {
       dialect: 'postgres'
     }
   }
+  const cloudinaryConfig = {
+    cloud_name: process.env.CLOUDINARY_NAME,
+    cloud_api_key: process.env.CLOUDINARY_KEY,
+    cloud_api_secret: process.env.CLOUDINARY_SECRET
+  }
+  let configOutput = {
+    ...dbConfig,
+    ...cloudinaryConfig
+  }
   switch (env) {
     case 'development':
       configOutput = {
+        ...configOutput,
         port: process.env.APP_PORT || 5000,
         secret,
-        pathVersion,
-        ...dbConfig
+        pathVersion
       }
       break
     case 'production':
       configOutput = {
+        ...configOutput,
         port: process.env.APP_PORT,
         secret,
-        pathVersion,
-        ...dbConfig
+        pathVersion
+
       }
       break
     default:

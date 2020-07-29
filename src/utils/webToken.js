@@ -2,6 +2,10 @@ const jwt = require('jsonwebtoken')
 
 const config = require('../../config')
 
-module.exports = (data) => {
+const webToken = (data) => {
   return jwt.sign(data, config.secret, { expiresIn: '24h' })
+}
+
+module.exports = {
+  webToken
 }

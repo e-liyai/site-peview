@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
       userPayload.authToken = authToken
       responseHelper(res, userPayload)
     } else {
-      responseHelper(res, { message: constants.USER_NOT_FOUND }, 204)
+      responseHelper(res, { message: constants.USER_NOT_FOUND }, 404)
     }
   } catch (err) {
     responseHelper(res, { message: constants.INTERNAL_ERROR }, 500)

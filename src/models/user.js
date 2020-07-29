@@ -24,6 +24,10 @@ const user = (sequelize, DataTypes) => {
     }
   })
 
+  User.associate = models => {
+    User.hasMany(models.Files)
+  }
+
   User.findByLogin = async (username, password) => {
     const hashPassword = sha256(password)
     const user = await User.findOne({

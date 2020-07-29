@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 
 const User = require('./user')
+const Files = require('./files')
 
 const {
   database,
@@ -11,7 +12,8 @@ const {
 
 const sequelize = new Sequelize(database, dbUser, dbPassword, dbDialect)
 const models = {
-  User: User(sequelize, Sequelize)
+  User: User(sequelize, Sequelize),
+  Files: Files(sequelize, Sequelize)
 }
 
 Object.keys(models).forEach(key => {
