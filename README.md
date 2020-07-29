@@ -11,21 +11,30 @@
 
 ### login
 This endpoint returns a JWT for use in all subsquent requests.
-```GET: ap1/v1/login/<username>/<password>```
+```
+GET: ap1/v1/login/<username>/<password>
+```
 
 ### userInfo
 Lists user infor and all files uploaded by a user.
-```GET: ap1/v1/user/<username>```
+```
+GET: ap1/v1/user/<username>
+```
 
 ### parse
 This endpoint returns a website preview
-```GET: ap1/v1/parse/<url>```
+```
+GET: ap1/v1/parse/<url>
+```
 
 ### translate
 perform GET request (`GET: ap1/v1/translate`) to get instraction on how to do the translate.
 
 To performm the translate execute:
-```POST: ap1/v1/translate/<url>``` with a payload that specifies the language to translate to.
+```
+POST: ap1/v1/translate/<url>
+``` 
+with a payload that specifies the language to translate to.
 
 ### upload
 uploads files to the cloud and saves file information. To retrieve the file, copy the `secure_url`(file->secure_url) value and perform a download. To list all the files uploaded, get user information.
@@ -39,4 +48,6 @@ body: multipart-form with file to upload
 
 ### download
 downloads/retrieves files from the cloud.
-```GET: ap1/v1/download/<file_url>```
+```
+GET: ap1/v1/download/<file_url>
+```
