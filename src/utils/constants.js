@@ -6,6 +6,7 @@ module.exports = {
   AUTHENTICATION_TOKEN_ERROR: 'invalid token provided',
   INVALID_URL: 'invalid url provided, please provide full URL and try again.',
   EXTERNAL_ERROR: 'external server error. cloud service failed to provide file, please try again later',
+  USER_DETAILS_NOT_FOUND: 'user not found',
   CLOUDINARY_LIMITATIONS: 'this service uses cloudinary to store files, which has limitations on PDFs and Archive files. \
     These files will be stored but cannot be retrieved, please user image file to test data retrival/download'
 }

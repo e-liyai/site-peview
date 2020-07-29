@@ -5,7 +5,10 @@ const authenticate = async (username, password) => {
 }
 
 const getUser = async (username) => {
-  return models.User.findOne({ where: { username } })
+  return models.User.findOne({
+    where: { username },
+    include: [{ model: models.Files }]
+  })
 }
 
 module.exports = {
