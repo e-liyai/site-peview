@@ -37,7 +37,6 @@ module.exports = async (req, res) => {
           fileResponse = file
         }
       )
-      console.log(cloudinary.url(`${uniqueFilename}.${fileResponse.format}`, { resource_type: 'raw' }))
       const dbUser = await user.getUser(req.username)
       await models.Files.create({
         userId: dbUser.id,

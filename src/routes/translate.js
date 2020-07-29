@@ -41,14 +41,14 @@ const translate = async (req, res) => {
   } catch (err) {
     responseHelper(res, err, 400)
   }
-  const webPage = await fetch.fetchWebPage(url.href)
-  if (!webPage.status) {
-    responseHelper(res, webPage.data, 500)
+  const { data, status } = await fetch.fetchWebPage(url.href)
+  if (!status) {
+    responseHelper(res, data, 500)
   }
   const reqParams = {
     parent,
     mimeType: 'text/html',
-    contents: [webPage.data],
+    contents: [data],
     targetLanguageCode: language
   }
 
@@ -61,7 +61,6 @@ const translate = async (req, res) => {
       break
     }
   } catch (error) {
-    console.log(error)
     responseHelper(res, error, 503)
   }
 }
