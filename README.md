@@ -19,9 +19,7 @@ Lists user infor and all files uploaded by a user.
 
 ### parse
 This endpoint returns a website preview
-```
-GET: ap1/v1/parse/<url>
-```
+```GET: ap1/v1/parse/<url>```
 
 ### translate
 perform GET request (`GET: ap1/v1/translate`) to get instraction on how to do the translate.
