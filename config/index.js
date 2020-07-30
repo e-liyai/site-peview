@@ -4,13 +4,16 @@ const pathVersion = '/api/v1/'
 
 const config = env => {
   const dbConfig = {
-    database: process.env.DATABASE,
-    dbUser: process.env.DATABASE_USER,
-    dbPassword: process.env.DATABASE_PASSWORD,
     dbURL: process.env.POSTGRES_URL,
     dbDialect: {
-      dialect: 'postgres',
-      host: process.env.DATABASE_HOST || 'localhost'
+      dialect: process.env.DB_DIALECT,
+      protocol: process.env.DB_DIALECT,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      }
     }
   }
   const cloudinaryConfig = {

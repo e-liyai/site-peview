@@ -34,7 +34,7 @@ uploads files to the cloud and saves file information. To retrieve the file, cop
 ```
 POST: ap1/v1/upload
 
-body: multipart-form with file to upload
+body: (multipart-form with file to upload) {file: <file_to_upload>}
 ```
 
 > This service uses cloudinary to store files, which has limitations on PDFs and Archive files([cloudinary suppoort](https://support.cloudinary.com/hc/en-us/community/posts/360008128779-404-error-when-viewing-pdf-file)). These files will be stored but cannot be retrieved, please user image or text file to test data retrival/download. 

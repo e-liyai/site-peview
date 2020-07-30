@@ -3,18 +3,9 @@ const Sequelize = require('sequelize')
 const User = require('./user')
 const Files = require('./files')
 
-const { dbURL } = require('../../config')
+const { dbURL, dbDialect } = require('../../config')
 
-const sequelize = new Sequelize(dbURL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
-})
+const sequelize = new Sequelize(dbURL, dbDialect)
 const models = {
   User: User(sequelize, Sequelize),
   Files: Files(sequelize, Sequelize)
