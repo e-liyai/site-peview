@@ -25,9 +25,7 @@ This endpoint returns a website preview
 perform GET request (`GET: ap1/v1/translate`) to get instraction on how to do the translate.
 
 To performm the translate execute:
-```
-POST: ap1/v1/translate/<url>
-``` 
+```POST: ap1/v1/translate/<url>``` 
 with a payload that specifies the language to translate to.
 
 ### upload
