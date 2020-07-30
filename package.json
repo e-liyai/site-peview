@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "nodemon index.js",
-    "test": "mocha tests/**/**.spec.js",
     "start:seed": "node src/seeders/index.js"
   },
   "repository": {

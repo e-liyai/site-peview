@@ -105,3 +105,4 @@ dist
 
 src/*.log
 .account-cred.json
+.cloud-env.txt
