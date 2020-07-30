@@ -1,3 +1,1 @@
 runtime: nodejs10
-beta_settings:
-  cloud_sql_instances: liyai-284818:us-central1:postgres
