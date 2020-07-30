@@ -9,7 +9,10 @@ const config = env => {
     dbPassword: process.env.DATABASE_PASSWORD,
     dbDialect: {
       dialect: 'postgres',
-      host: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}` || 'localhost'
+      host: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}` || 'localhost',
+      dialectOptions: {
+        socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
+      }
     }
   }
   const cloudinaryConfig = {
