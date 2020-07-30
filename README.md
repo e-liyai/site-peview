@@ -11,9 +11,7 @@
 
 ### login
 This endpoint returns a JWT for use in all subsquent requests.
-```
-GET: ap1/v1/login/<username>/<password>
-```
+```GET: ap1/v1/login/<username>/<password>```
 
 ### userInfo
 Lists user infor and all files uploaded by a user.
