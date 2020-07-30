@@ -3,12 +3,11 @@ const { responseFile, response } = require('./response')
 const constants = require('./constants')
 const logger = require('./logger')
 const fetchWebPage = require('./fetchWebPage')
-const { storage, cloudinary } = require('./cloudinary')
+const { cloudinary } = require('./cloudinary')
 
 module.exports = {
   constants,
   logger,
-  storage,
   cloudinary,
   responseFile,
   fetch: fetchWebPage,
