@@ -10,6 +10,7 @@ const {
   dbDialect
 } = require('../../config')
 
+console.log(database, dbUser, dbPassword, dbDialect)
 const sequelize = new Sequelize(database, dbUser, dbPassword, dbDialect)
 const models = {
   User: User(sequelize, Sequelize),
