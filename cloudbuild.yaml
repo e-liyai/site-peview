@@ -16,4 +16,4 @@ steps:
   args: ["run", "start:seed"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
-timeout: "1600s"
+timeout: "4000s"
