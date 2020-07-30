@@ -1,7 +1,4 @@
 steps:
-- name: node:10.22.0
-  entrypoint: npm
-  args: ["install"]
 - name: "gcr.io/cloud-builders/gcloud"
   args:
     - kms
@@ -13,7 +10,10 @@ steps:
     - --key=cloudbuild-env
 - name: node:10.22.0
   entrypoint: npm
+  args: ["install"]
+- name: node:10.22.0
+  entrypoint: npm
   args: ["run", "start:seed"]
-- name: "gcr.io/cloud-builders/npm"
+- name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "4000s"
