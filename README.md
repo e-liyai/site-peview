@@ -40,6 +40,4 @@ body: multipart-form with file to upload
 
 ### download
 downloads/retrieves files from the cloud.
-```
-GET: ap1/v1/download/<file_url>
-```
+```GET: ap1/v1/download/<file_url>```
