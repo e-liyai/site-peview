@@ -4,9 +4,9 @@
   "description": "create a response that can then be shown to the user as a card, when a url is presented",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
-    "start:seed": "node src/seeders/index.js",
+    "start": "node -r dotenv/config index.js",
+    "start:dev": "nodemon -r dotenv/config index.js",
+    "start:seed": "node -r dotenv/config src/seeders/index.js",
     "test": "mocha tests/**/**.spec.js"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "cloudinary": "^1.22.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "js-sha256": "^0.9.0",
     "jsonwebtoken": "^8.5.1",
