@@ -8,7 +8,8 @@ const config = env => {
     dbUser: process.env.DATABASE_USER,
     dbPassword: process.env.DATABASE_PASSWORD,
     dbDialect: {
-      dialect: 'postgres'
+      dialect: 'postgres',
+      host: process.env.DATABASE_HOST || 'localhost'
     }
   }
   const cloudinaryConfig = {
