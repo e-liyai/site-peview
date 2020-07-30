@@ -5,12 +5,14 @@ const Files = require('./files')
 
 const { dbURL } = require('../../config')
 
-console.log(dbURL)
 const sequelize = new Sequelize(dbURL, {
   dialect: 'postgres',
   protocol: 'postgres',
   dialectOptions: {
-    ssl: true
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   }
 })
 const models = {
