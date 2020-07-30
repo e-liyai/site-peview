@@ -15,9 +15,7 @@ This endpoint returns a JWT for use in all subsquent requests.
 
 ### userInfo
 Lists user infor and all files uploaded by a user.
-```
-GET: ap1/v1/user/<username>
-```
+```GET: ap1/v1/user/<username>```
 
 ### parse
 This endpoint returns a website preview
