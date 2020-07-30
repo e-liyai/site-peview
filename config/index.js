@@ -10,7 +10,7 @@ const config = env => {
     dbURL: process.env.POSTGRES_URL,
     dbDialect: {
       dialect: 'postgres',
-      host: process.env.DATABASE_HOST} || 'localhost',
+      host: process.env.DATABASE_HOST || 'localhost'
     }
   }
   const cloudinaryConfig = {
