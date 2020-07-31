@@ -45,22 +45,53 @@ const translate = async (req, res) => {
   if (!status) {
     responseHelper(res, data, 500)
   }
-  const reqParams = {
-    parent,
-    mimeType: 'text/html',
-    contents: [data],
-    targetLanguageCode: language
+
+  const translateReqParams = (data) => {
+    return {
+      parent,
+      mimeType: 'text/html',
+      contents: [data],
+      targetLanguageCode: language
+    }
+  }
+
+  const chunkSubstr = (str, size) => {
+    const numChunks = Math.ceil(str.length / size)
+    const chunks = new Array(numChunks)
+
+    for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
+      chunks[i] = str.substr(o, size)
+    }
+
+    return chunks
+  }
+
+  async function asyncForEach (array, callback) {
+    for (let index = 0; index < array.length; index++) {
+      await callback(array[index], index, array)
+    }
   }
 
   try {
-    const [response] = await translationServiceClient.translateText(reqParams)
+    const dataList = chunkSubstr(data, 20000)
+    const responses = []
+    const translations = []
+    await asyncForEach(dataList, async (dataItem) => {
+      const param = translateReqParams(dataItem)
+      const [response] = await translationServiceClient.translateText(param)
+      responses.push(response)
+    })
 
-    for (const translation of response.translations) {
-      res.set('Content-Type', 'text/html')
-      responseHelper(res, translation.translatedText)
-      break
+    for (const response of responses) {
+      for (const translation of response.translations) {
+        translations.push(translation.translatedText)
+      }
     }
+    res.setHeader('Content-Type', 'text/html')
+    res.writeHead(200)
+    res.end(translations.join(''))
   } catch (error) {
+    console.log(error)
     responseHelper(res, error, 503)
   }
 }
